@@ -1,0 +1,37 @@
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent" class="formContent">
+
+            <form [formGroup]="loginform" (ngSubmit)="login()">
+                <br>
+                <h2 class="text-center">Sign In</h2>
+                
+                <div class="form-group">
+                <br>
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email" required>
+                    <div *ngIf="email?.touched && email?.invalid" class="text-danger">
+                        <div *ngIf="email?.errors?.['required']">*This is a required field</div>
+                        <div *ngIf="email?.errors?.['email']">!Please enter a valid email address</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                <br>
+                    <input type="password" placeholder="password" class="form-control" id="password" formControlName="password" required>
+                    <div *ngIf="password?.touched && password?.invalid" class="text-danger">
+                        <div *ngIf="password?.errors?.['required']">*This is a required field</div>
+                        <div *ngIf="password?.errors?.['minlength']">!Minimum 6 characters required</div>
+                    </div>
+                </div>
+    
+                <!-- <div class="d-flex justify-content-between mb-3">
+                    <a href="#">Forgot Password</a>
+                    <a href="#">Signup</a>
+                </div> -->
+    <div class="button">
+                <button class="form-group" type="submit" class="btn btn-primary" [disabled]="!loginform.valid">Sign In</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    
